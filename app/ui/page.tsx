@@ -1,21 +1,21 @@
-import { ThemeSwitch } from "@/components/ThemeSwitch";
 import resolveConfig from "tailwindcss/resolveConfig";
+
 import tailwindConfig from "@/tailwind.config";
+import { ThemeSwitch } from "@/components";
 
 const fullConfig = resolveConfig(tailwindConfig);
 
-function extractStringKeys(obj: any): string[] {
+function extractStringValuesFromObject(object: any): string[] {
   const keys = [];
 
-  for (const key in obj) {
-    if (obj.hasOwnProperty(key)) {
-      const value = obj[key];
+  for (const key in object) {
+    if (object.hasOwnProperty(key)) {
+      const value = object[key];
 
       if (typeof value === "string") {
         keys.push(key);
-      } else if (typeof value === "object" && value !== null) {
-        // Chamada recursiva para objetos aninhados
-        const nestedKeys = extractStringKeys(value);
+      } else if (typeof value === "object" && value) {
+        const nestedKeys = extractStringValuesFromObject(value);
         keys.push(...nestedKeys.map((nestedKey) => `${key}-${nestedKey}`));
       }
     }
@@ -24,12 +24,12 @@ function extractStringKeys(obj: any): string[] {
   return keys;
 }
 
-const colors: { [key: string]: Array<string> } = Object.keys(
+const tailwindColors: { [key: string]: Array<string> } = Object.keys(
   fullConfig.theme.colors
 ).reduce(
   (acc, key) => ({
     ...acc,
-    [key]: extractStringKeys(fullConfig.theme.colors[key]),
+    [key]: extractStringValuesFromObject(fullConfig.theme.colors[key]),
   }),
   {}
 );
@@ -113,11 +113,11 @@ export default function UI() {
         <div className="space-y-4 pb-5 border-b">
           <h2 className="text-2xl font-semibold">Colors</h2>
           <div className="space-y-2">
-            {Object.keys(colors).map((key) => (
+            {Object.keys(tailwindColors).map((key) => (
               <div key={key} className="space-y-2">
                 <p className="text-xl capitalize">{key}</p>
                 <div className="space-y-2">
-                  {colors[key].map((color) => (
+                  {tailwindColors[key].map((color) => (
                     <div key={color} className="flex space-x-4">
                       <p>{`${key}-${color}`}</p>
                       <div className={`bg-${key}-${color} w-20 h-10`} />
