@@ -111,26 +111,25 @@ const config: Config & {
         "high-em": "var(--text-high-em)",
         disabled: "var(--text-disabled)",
         primary: {
-          "base-em": "var(--text-primary-base-em)",
-          "low-em": "var(--text-primary-low-em)",
-          "med-em": "var(--text-primary-med-em)",
-          "high-em": "var(--text-primary-high-em)",
+          base: "var(--text-primary-base)",
+          main: "var(--text-primary-main)",
+          med: "var(--text-primary-med)",
         },
         secondary: {
-          "med-em": "var(--text-secondary-med-em)",
-          "high-em": "var(--text-secondary-high-em)",
+          main: "var(--text-secondary-main)",
+          em: "var(--text-secondary-em)",
         },
         success: {
-          "med-em": "var(--text-success-med-em)",
-          "high-em": "var(--text-success-high-em)",
+          main: "var(--text-success-main)",
+          em: "var(--text-success-em)",
         },
         danger: {
-          "med-em": "var(--text-danger-med-em)",
-          "high-em": "var(--text-danger-high-em)",
+          main: "var(--text-danger-main)",
+          em: "var(--text-danger-em)",
         },
         info: {
-          "med-em": "var(--text-info-med-em)",
-          "high-em": "var(--text-info-high-em)",
+          main: "var(--text-info-main)",
+          em: "var(--text-info-em)",
         },
         "neutral-alt": {
           white: "var(--text-neutral-alt-white)",
@@ -146,50 +145,62 @@ const config: Config & {
           "med-em": "var(--surface-disabled-med-em)",
           "high-em": "var(--surface-disabled-high-em)",
         },
-        "primary-accent": {
-          1: "var(--surface-primary-accent-1)",
-          2: "var(--surface-primary-accent-2)",
-          3: "var(--surface-primary-accent-3)",
-          4: "var(--surface-primary-accent-4)",
+        primary: {
+          main: "var(--surface-primary-main)",
+          accent: {
+            1: "var(--surface-primary-accent-1)",
+            2: "var(--surface-primary-accent-2)",
+            3: "var(--surface-primary-accent-3)",
+          },
         },
-        "secondary-accent": {
-          1: "var(--surface-secondary-accent-1)",
-          2: "var(--surface-secondary-accent-2)",
-          3: "var(--surface-secondary-accent-3)",
-          4: "var(--surface-secondary-accent-4)",
+        secondary: {
+          main: "var(--surface-secondary-main)",
+          accent: {
+            1: "var(--surface-secondary-accent-1)",
+            2: "var(--surface-secondary-accent-2)",
+            3: "var(--surface-secondary-accent-3)",
+          },
         },
-        "success-accent": {
-          1: "var(--surface-success-accent-1)",
-          2: "var(--surface-success-accent-2)",
-          3: "var(--surface-success-accent-3)",
-          4: "var(--surface-success-accent-4)",
+        success: {
+          main: "var(--surface-success-main)",
+          accent: {
+            1: "var(--surface-success-accent-1)",
+            2: "var(--surface-success-accent-2)",
+            3: "var(--surface-success-accent-3)",
+          },
         },
-        "danger-accent": {
-          1: "var(--surface-danger-accent-1)",
-          2: "var(--surface-danger-accent-2)",
-          3: "var(--surface-danger-accent-3)",
-          4: "var(--surface-danger-accent-4)",
+        danger: {
+          main: "var(--surface-danger-main)",
+          accent: {
+            1: "var(--surface-danger-accent-1)",
+            2: "var(--surface-danger-accent-2)",
+            3: "var(--surface-danger-accent-3)",
+          },
         },
-        "info-accent": {
-          1: "var(--surface-info-accent-1)",
-          2: "var(--surface-info-accent-2)",
-          3: "var(--surface-info-accent-3)",
-          4: "var(--surface-info-accent-4)",
+        info: {
+          main: "var(--surface-info-main)",
+          accent: {
+            1: "var(--surface-info-accent-1)",
+            2: "var(--surface-info-accent-2)",
+            3: "var(--surface-info-accent-3)",
+          },
         },
-        "warning-accent": {
-          1: "var(--surface-warning-accent-1)",
-          2: "var(--surface-warning-accent-2)",
-          3: "var(--surface-warning-accent-3)",
-          4: "var(--surface-warning-accent-4)",
+        warning: {
+          main: "var(--surface-warning-main)",
+          accent: {
+            1: "var(--surface-warning-accent-1)",
+            2: "var(--surface-warning-accent-2)",
+            3: "var(--surface-warning-accent-3)",
+          },
         },
-        "surface-s": {
-          0: "var(--surface-s-0)",
-          1: "var(--surface-s-1)",
-          2: "var(--surface-s-2)",
-          3: "var(--surface-s-3)",
-          4: "var(--surface-s-4)",
-          bg: "var(--surface-s-bg)",
-          "high-em": "var(--surface-s-high-em)",
+        "surface-surface": {
+          0: "var(--surface-surface-0)",
+          1: "var(--surface-surface-1)",
+          2: "var(--surface-surface-2)",
+          3: "var(--surface-surface-3)",
+          4: "var(--surface-surface-4)",
+          bg: "var(--surface-surface-bg)",
+          "high-em": "var(--surface-surface-high-em)",
         },
         "neutral-alt": {
           white: "var(--surface-neutral-alt-white)",
