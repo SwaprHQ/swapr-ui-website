@@ -1,6 +1,7 @@
 import resolveConfig from "tailwindcss/resolveConfig";
 
 import tailwindConfig from "@/tailwind.config";
+import { Button, ButtonColorSchemeProp, ButtonVariantProp } from "@/ui";
 import { ThemeSwitch } from "@/components";
 
 const fullConfig = resolveConfig(tailwindConfig);
@@ -34,6 +35,58 @@ const tailwindColors: { [key: string]: Array<string> } = Object.keys(
   {}
 );
 
+interface ButtonListProps {
+  children: string;
+  disabled?: boolean;
+  active?: boolean;
+  variant?: ButtonVariantProp;
+  colorScheme?: ButtonColorSchemeProp;
+}
+
+const buttonsList: Array<Array<ButtonListProps>> = [
+  [
+    { children: "Primary" },
+    { children: "Disabled", disabled: true },
+    { children: "Primary active", active: true },
+    { children: "Secondary", variant: "pastel" },
+    { children: "Outline", variant: "outline" },
+    { children: "Ghost", variant: "ghost" },
+    { children: "Ghost disabled", variant: "ghost", disabled: true },
+  ],
+  [
+    { children: "Error", colorScheme: "error" },
+    { children: "Error disabled", colorScheme: "error", disabled: true },
+    { children: "Error active", colorScheme: "error", active: true },
+    { children: "Error secondary", colorScheme: "error", variant: "pastel" },
+    { children: "Error outline", colorScheme: "error", variant: "outline" },
+    { children: "Error ghost", colorScheme: "error", variant: "ghost" },
+    {
+      children: "Error ghost disabled",
+      colorScheme: "error",
+      variant: "ghost",
+      disabled: true,
+    },
+  ],
+  [
+    { children: "Success", colorScheme: "success" },
+    { children: "Success disabled", colorScheme: "success", disabled: true },
+    { children: "Success active", colorScheme: "success", active: true },
+    {
+      children: "Success secondary",
+      colorScheme: "success",
+      variant: "pastel",
+    },
+    { children: "Success outline", colorScheme: "success", variant: "outline" },
+    { children: "Success ghost", colorScheme: "success", variant: "ghost" },
+    {
+      children: "Success ghost disabled",
+      colorScheme: "success",
+      variant: "ghost",
+      disabled: true,
+    },
+  ],
+];
+
 export default function UI() {
   return (
     <main className="px-5 mx-auto my-10 max-w-screen-xl">
@@ -42,23 +95,13 @@ export default function UI() {
         <h1 className="text-3xl">Swapr UI</h1>
         <div className="space-y-4 pb-5 border-b">
           <h2 className="text-2xl font-semibold">Buttons</h2>
-          <div className="flex space-x-2">
-            <button className="bg-surface-primary-accent-1 text-text-primary-base-em rounded-6 px-4 py-2">
-              Purple button
-            </button>
-            <button className="bg-surface-info-accent-1 text-text-info-high-em rounded-6 px-4 py-2">
-              Blue button
-            </button>
-            <button className="bg-surface-danger-accent-1 text-text-danger-high-em rounded-6 px-4 py-2">
-              Red button
-            </button>
-            <button className="bg-surface-success-accent-1 text-text-success-high-em rounded-6 px-4 py-2">
-              Green button
-            </button>
-            <button className="bg-surface-warning-accent-1 text-text-neutral-alt-white rounded-6 px-4 py-2">
-              Yellow button
-            </button>
-          </div>
+          {buttonsList.map((row, i) => (
+            <div key={i} className="flex space-x-2">
+              {row.map((button, j) => (
+                <Button {...button} key={j} />
+              ))}
+            </div>
+          ))}
         </div>
         <div className="space-y-4 pb-5 border-b">
           <h2 className="text-2xl font-semibold">Font sizes</h2>

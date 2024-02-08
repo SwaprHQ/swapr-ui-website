@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss";
+import colors from "tailwindcss/colors";
 
 interface RecursiveKeyValuePair<K extends keyof any = string, V = string> {
   [key: string]: V | RecursiveKeyValuePair<K, V>;
@@ -9,8 +10,8 @@ const config: Config & {
 } = {
   darkMode: ["class", '[data-theme="dark"]'],
   content: [
-    "./pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
+    "./ui/**/*.{js,ts,jsx,tsx,mdx}",
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   safelist: [
@@ -24,6 +25,9 @@ const config: Config & {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+      },
+      boxShadow: {
+        button: "inset 0px -1px 0px 0px var(--color-black-12)",
       },
     },
     boxShadow: {
@@ -60,6 +64,7 @@ const config: Config & {
       100: "100px",
     },
     colors: {
+      inherit: colors.inherit,
       outline: {
         none: "var(--outline-none)",
         white: "var(--outline-white)",
@@ -193,7 +198,7 @@ const config: Config & {
             3: "var(--surface-warning-accent-3)",
           },
         },
-        "surface-surface": {
+        surface: {
           0: "var(--surface-surface-0)",
           1: "var(--surface-surface-1)",
           2: "var(--surface-surface-2)",
