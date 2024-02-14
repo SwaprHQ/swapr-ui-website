@@ -311,8 +311,8 @@ html {
   --text-low-em: var(--color-white-48);
   --text-med-em: var(--color-white-76);
   --text-high-em: var(--color-white-100);
-  --text-neutral-alt-black: var(--color-black-100);
-  --text-neutral-alt-white: var(--color-white-100);
+  --text-neutral-alt-black: var(--color-white-100);
+  --text-neutral-alt-white: var(--color-black-100);
   --text-danger-em: var(--color-danger-300);
   --text-danger-main: var(--color-danger-400);
   --text-info-em: var(--color-info-300);
