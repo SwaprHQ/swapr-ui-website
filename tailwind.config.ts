@@ -119,6 +119,7 @@ const config: Config & {
           base: "var(--text-primary-base)",
           main: "var(--text-primary-main)",
           med: "var(--text-primary-med)",
+          em: "var(--text-primary-em)",
         },
         secondary: {
           main: "var(--text-secondary-main)",

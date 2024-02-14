@@ -1,7 +1,17 @@
 import resolveConfig from "tailwindcss/resolveConfig";
 
 import tailwindConfig from "@/tailwind.config";
-import { Button, ButtonColorSchemeProp, ButtonVariantProp } from "@/ui";
+import {
+  Button,
+  ButtonColorSchemeProp,
+  ButtonVariantProp,
+  IconBadge,
+  IconBadgeColorSchemeProp,
+  IconBadgeVariantProp,
+  Icon,
+  IconName,
+  iconMap,
+} from "@/ui";
 import { ThemeSwitch } from "@/components";
 
 const fullConfig = resolveConfig(tailwindConfig);
@@ -87,6 +97,55 @@ const buttonsList: Array<Array<ButtonListProps>> = [
   ],
 ];
 
+interface IconBadgeListProps {
+  colorScheme?: IconBadgeColorSchemeProp;
+  variant?: IconBadgeVariantProp;
+  size?: "lg";
+}
+
+const iconBadgeList: Array<Array<IconBadgeListProps>> = [
+  [
+    { size: "lg" },
+    {},
+    { size: "lg", variant: "pastel" },
+    { variant: "pastel" },
+    { size: "lg", variant: "outline" },
+    { variant: "outline" },
+    { size: "lg", variant: "ghost" },
+    { variant: "ghost" },
+  ],
+  [
+    { size: "lg", colorScheme: "secondary" },
+    { colorScheme: "secondary" },
+    { size: "lg", variant: "pastel", colorScheme: "secondary" },
+    { variant: "pastel", colorScheme: "secondary" },
+    { size: "lg", variant: "outline", colorScheme: "secondary" },
+    { variant: "outline", colorScheme: "secondary" },
+    { size: "lg", variant: "ghost", colorScheme: "secondary" },
+    { variant: "ghost", colorScheme: "secondary" },
+  ],
+  [
+    { size: "lg", colorScheme: "error" },
+    { colorScheme: "error" },
+    { size: "lg", variant: "pastel", colorScheme: "error" },
+    { variant: "pastel", colorScheme: "error" },
+    { size: "lg", variant: "outline", colorScheme: "error" },
+    { variant: "outline", colorScheme: "error" },
+    { size: "lg", variant: "ghost", colorScheme: "error" },
+    { variant: "ghost", colorScheme: "error" },
+  ],
+  [
+    { size: "lg", colorScheme: "success" },
+    { colorScheme: "success" },
+    { size: "lg", variant: "pastel", colorScheme: "success" },
+    { variant: "pastel", colorScheme: "success" },
+    { size: "lg", variant: "outline", colorScheme: "success" },
+    { variant: "outline", colorScheme: "success" },
+    { size: "lg", variant: "ghost", colorScheme: "success" },
+    { variant: "ghost", colorScheme: "success" },
+  ],
+];
+
 export default function UI() {
   return (
     <main className="px-5 mx-auto my-10 max-w-screen-xl">
@@ -102,6 +161,35 @@ export default function UI() {
               ))}
             </div>
           ))}
+        </div>
+        <div className="space-y-4 pb-5 border-b">
+          <h2 className="text-2xl font-semibold">Icons</h2>
+          <div className="flex flex-wrap space-x-4 space-y-2 md:space-y-0">
+            {Object.keys(iconMap).map((iconName) => (
+              <div
+                className="flex flex-col items-center space-y-2"
+                key={iconName}
+              >
+                <Icon name={iconName as IconName} size={24} />
+                <div className="p-1 rounded-lg bg-surface-75">
+                  <p>{iconName}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div className="space-y-4 pb-5 border-b">
+          <h2 className="text-2xl font-semibold">Icon Badges</h2>
+          <div className="space-y-4">
+            {iconBadgeList.map((row, i) => (
+              <div key={i} className="flex space-x-4 items-center">
+                {row.map((iconBadge, j) => (
+                  <IconBadge name="bar-graph-fill" {...iconBadge} key={j} />
+                ))}
+              </div>
+            ))}
+          </div>
         </div>
         <div className="space-y-4 pb-5 border-b">
           <h2 className="text-2xl font-semibold">Font sizes</h2>
