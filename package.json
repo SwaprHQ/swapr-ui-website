@@ -13,7 +13,8 @@
     "next": "latest",
     "next-themes": "^0.2.1",
     "react": "latest",
-    "react-dom": "latest"
+    "react-dom": "latest",
+    "tailwind-merge": "^2.2.1"
   },
   "devDependencies": {
     "@svgr/webpack": "^8.1.0",
