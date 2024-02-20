@@ -11,6 +11,10 @@ import {
   Icon,
   IconName,
   iconMap,
+  Logo,
+  LogoPair,
+  LogoPairVariant,
+  LogoSizeProp,
 } from "@/ui";
 import { ThemeSwitch } from "@/components";
 
@@ -146,6 +150,36 @@ const iconBadgeList: Array<Array<IconBadgeListProps>> = [
   ],
 ];
 
+interface LogoListProps {
+  variant?: LogoPairVariant;
+  size?: LogoSizeProp;
+}
+
+const logoList: Array<LogoListProps> = [
+  { size: "xl" },
+  { size: "lg" },
+  { size: "md" },
+  { size: "sm" },
+  { size: "xs" },
+];
+
+const logoPairList: Array<Array<LogoListProps>> = [
+  [
+    { size: "xl" },
+    { size: "lg" },
+    { size: "md" },
+    { size: "sm" },
+    { size: "xs" },
+  ],
+  [
+    { size: "xl", variant: "highlight" },
+    { size: "lg", variant: "highlight" },
+    { size: "md", variant: "highlight" },
+    { size: "sm", variant: "highlight" },
+    { size: "xs", variant: "highlight" },
+  ],
+];
+
 export default function UI() {
   return (
     <main className="px-5 mx-auto my-10 max-w-screen-xl">
@@ -191,6 +225,36 @@ export default function UI() {
             ))}
           </div>
         </div>
+
+        <div className="space-y-4 pb-5 border-b">
+          <h2 className="text-2xl font-semibold">Logos</h2>
+          <div className="space-y-4">
+            <div className="flex space-x-2">
+              {logoList.map((iconBadge, i) => (
+                <Logo
+                  src="https://assets.smold.app/api/token/100/0xe91D153E0b41518A2Ce8Dd3D7944Fa863463a97d/logo-128.png"
+                  alt="xdai token"
+                  {...iconBadge}
+                  key={i}
+                />
+              ))}
+            </div>
+            {logoPairList.map((row, i) => (
+              <div key={i} className="flex space-x-2">
+                {row.map((iconBadge, j) => (
+                  <LogoPair
+                    logoASrc="https://assets.smold.app/api/token/100/0xe91D153E0b41518A2Ce8Dd3D7944Fa863463a97d/logo-128.png"
+                    logoBSrc="https://assets.smold.app/api/token/1/0x6810e776880C02933D47DB1b9fc05908e5386b96/logo-128.png"
+                    alt="xdai token"
+                    {...iconBadge}
+                    key={j}
+                  />
+                ))}
+              </div>
+            ))}
+          </div>
+        </div>
+
         <div className="space-y-4 pb-5 border-b">
           <h2 className="text-2xl font-semibold">Font sizes</h2>
           <div className="space-y-2">
