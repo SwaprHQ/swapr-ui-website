@@ -15,8 +15,12 @@ import {
   LogoPair,
   LogoPairVariant,
   LogoSizeProp,
+  ChipButton,
+  ChipButtonColorSchemeProp,
+  ChipButtonSizeProp,
 } from "@/ui";
 import { ThemeSwitch } from "@/components";
+import { PropsWithChildren } from "react";
 
 const fullConfig = resolveConfig(tailwindConfig);
 
@@ -180,6 +184,38 @@ const logoPairList: Array<Array<LogoListProps>> = [
   ],
 ];
 
+interface ChipButtonProps extends PropsWithChildren {
+  colorScheme?: ChipButtonColorSchemeProp;
+  size?: ChipButtonSizeProp;
+  disabled?: boolean;
+  active?: boolean;
+}
+
+const ChipBittonChildren = (
+  <>
+    <Icon name="plus" />
+    <span>Chip Button</span>
+    <Icon name="cross" />
+  </>
+);
+
+const chipButtonList: Array<Array<ChipButtonProps>> = [
+  [
+    {
+      children: ChipBittonChildren,
+    },
+    { size: "sm", children: ChipBittonChildren },
+    { children: ChipBittonChildren, active: true },
+    { children: ChipBittonChildren, disabled: true },
+  ],
+  [
+    { colorScheme: "primary", children: ChipBittonChildren },
+    { colorScheme: "primary", size: "sm", children: ChipBittonChildren },
+    { colorScheme: "primary", children: ChipBittonChildren, active: true },
+    { colorScheme: "primary", children: ChipBittonChildren, disabled: true },
+  ],
+];
+
 export default function UI() {
   return (
     <main className="px-5 mx-auto my-10 max-w-screen-xl">
@@ -192,6 +228,16 @@ export default function UI() {
             <div key={i} className="flex space-x-2">
               {row.map((button, j) => (
                 <Button {...button} key={j} />
+              ))}
+            </div>
+          ))}
+        </div>
+        <div className="space-y-4 pb-5 border-b">
+          <h2 className="text-2xl font-semibold">Chip Buttons</h2>
+          {chipButtonList.map((row, i) => (
+            <div key={i} className="flex space-x-2">
+              {row.map((button, j) => (
+                <ChipButton {...button} key={j} />
               ))}
             </div>
           ))}
