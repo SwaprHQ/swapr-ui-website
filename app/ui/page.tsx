@@ -1,3 +1,5 @@
+"use client";
+
 import resolveConfig from "tailwindcss/resolveConfig";
 
 import tailwindConfig from "@/tailwind.config";
@@ -18,6 +20,10 @@ import {
   ChipButton,
   ChipButtonColorSchemeProp,
   ChipButtonSizeProp,
+  errorToast,
+  successToast,
+  toast,
+  warningToast,
 } from "@/ui";
 import { ThemeSwitch } from "@/components";
 import { PropsWithChildren } from "react";
@@ -243,6 +249,44 @@ export default function UI() {
           ))}
         </div>
         <div className="space-y-4 pb-5 border-b">
+          <h2 className="text-2xl font-semibold">Toast</h2>
+          <div className="flex space-x-4">
+            <Button onClick={() => toast({ children: "Default Toast" })}>
+              Open Default Toast
+            </Button>
+            <Button
+              colorScheme="error"
+              onClick={() =>
+                errorToast({ children: "Error Toast", colorScheme: "error" })
+              }
+            >
+              Open Error Toast
+            </Button>
+            <Button
+              colorScheme="success"
+              onClick={() =>
+                successToast({
+                  children: "Success Toast",
+                  colorScheme: "success",
+                })
+              }
+            >
+              Open Success Toast
+            </Button>
+            <Button
+              variant="pastel"
+              onClick={() =>
+                warningToast({
+                  children: "Warning Toast",
+                  colorScheme: "warning",
+                })
+              }
+            >
+              Open Warning Toast
+            </Button>
+          </div>
+        </div>
+        <div className="space-y-4 pb-5 border-b">
           <h2 className="text-2xl font-semibold">Icons</h2>
           <div className="flex flex-wrap space-x-4 space-y-2 md:space-y-0">
             {Object.keys(iconMap).map((iconName) => (
@@ -258,7 +302,6 @@ export default function UI() {
             ))}
           </div>
         </div>
-
         <div className="space-y-4 pb-5 border-b">
           <h2 className="text-2xl font-semibold">Icon Badges</h2>
           <div className="space-y-4">
