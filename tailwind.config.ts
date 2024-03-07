@@ -64,7 +64,11 @@ const config: Config & {
       100: "100px",
     },
     colors: {
+      transparent: "transparent",
       inherit: colors.inherit,
+      black: {
+        12: "var(--color-black-12)",
+      },
       outline: {
         none: "var(--outline-none)",
         white: "var(--outline-white)",

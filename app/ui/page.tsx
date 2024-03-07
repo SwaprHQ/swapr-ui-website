@@ -24,6 +24,8 @@ import {
   successToast,
   toast,
   warningToast,
+  Tag,
+  TagColorSchemeProp,
 } from "@/ui";
 import { ThemeSwitch } from "@/components";
 import { PropsWithChildren } from "react";
@@ -41,7 +43,7 @@ function extractStringValuesFromObject(object: any): string[] {
         keys.push(key);
       } else if (typeof value === "object" && value) {
         const nestedKeys = extractStringValuesFromObject(value);
-        keys.push(...nestedKeys.map((nestedKey) => `${key}-${nestedKey}`));
+        keys.push(...nestedKeys.map(nestedKey => `${key}-${nestedKey}`));
       }
     }
   }
@@ -222,6 +224,16 @@ const chipButtonList: Array<Array<ChipButtonProps>> = [
   ],
 ];
 
+const TagColorSchemes = [
+  "primary",
+  "secondary",
+  "tertiary",
+  "quaternary",
+  "success",
+  "danger",
+  "info",
+];
+
 export default function UI() {
   return (
     <main className="px-5 mx-auto my-10 max-w-screen-xl">
@@ -287,9 +299,22 @@ export default function UI() {
           </div>
         </div>
         <div className="space-y-4 pb-5 border-b">
+          <h2 className="text-2xl font-semibold">Tag</h2>
+          <div className="flex space-x-6">
+            {TagColorSchemes.map(color => (
+              <>
+                <Tag colorScheme={color as TagColorSchemeProp} size="sm">
+                  Tag
+                </Tag>
+                <Tag colorScheme={color as TagColorSchemeProp}>Tag</Tag>
+              </>
+            ))}
+          </div>
+        </div>
+        <div className="space-y-4 pb-5 border-b">
           <h2 className="text-2xl font-semibold">Icons</h2>
           <div className="flex flex-wrap space-x-4 space-y-2 md:space-y-0">
-            {Object.keys(iconMap).map((iconName) => (
+            {Object.keys(iconMap).map(iconName => (
               <div
                 className="flex flex-col items-center space-y-2"
                 key={iconName}
@@ -397,11 +422,11 @@ export default function UI() {
         <div className="space-y-4 pb-5 border-b">
           <h2 className="text-2xl font-semibold">Colors</h2>
           <div className="space-y-2">
-            {Object.keys(tailwindColors).map((key) => (
+            {Object.keys(tailwindColors).map(key => (
               <div key={key} className="space-y-2">
                 <p className="text-xl capitalize">{key}</p>
                 <div className="space-y-2">
-                  {tailwindColors[key].map((color) => (
+                  {tailwindColors[key].map(color => (
                     <div key={color} className="flex space-x-4">
                       <p>{`${key}-${color}`}</p>
                       <div className={`bg-${key}-${color} w-20 h-10`} />
