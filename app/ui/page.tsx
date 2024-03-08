@@ -29,6 +29,12 @@ import {
 } from "@/ui";
 import { ThemeSwitch } from "@/components";
 import { PropsWithChildren } from "react";
+import Switcher, {
+  SwitcherBody,
+  SwitcherHeader,
+  SwitcherTab,
+} from "@/ui/Switcher";
+import { Tab } from "@headlessui/react";
 
 const fullConfig = resolveConfig(tailwindConfig);
 
@@ -299,15 +305,46 @@ export default function UI() {
           </div>
         </div>
         <div className="space-y-4 pb-5 border-b">
+          <h2 className="text-2xl font-semibold">Switcher</h2>
+          <div className="flex space-x-6">
+            <Switcher
+              onChange={index => console.log("Changed selected tab to:", index)}
+            >
+              <SwitcherHeader>
+                <SwitcherTab>active</SwitcherTab>
+                <SwitcherTab>complete</SwitcherTab>
+                <SwitcherTab>cancelled</SwitcherTab>
+              </SwitcherHeader>
+              <SwitcherBody className="mt-2">
+                <Tab.Panel>
+                  <div className="bg-surface-info-accent-1 p-5 rounded-4">
+                    Active
+                  </div>
+                </Tab.Panel>
+                <Tab.Panel>
+                  <div className="bg-surface-info-accent-1 p-5 rounded-4">
+                    complete
+                  </div>
+                </Tab.Panel>
+                <Tab.Panel>
+                  <div className="bg-surface-info-accent-1 p-5 rounded-4">
+                    cancelled
+                  </div>
+                </Tab.Panel>
+              </SwitcherBody>
+            </Switcher>
+          </div>
+        </div>
+        <div className="space-y-4 pb-5 border-b">
           <h2 className="text-2xl font-semibold">Tag</h2>
           <div className="flex space-x-6">
             {TagColorSchemes.map(color => (
-              <>
+              <div className="flex space-x-6" key={color}>
                 <Tag colorScheme={color as TagColorSchemeProp} size="sm">
                   Tag
                 </Tag>
                 <Tag colorScheme={color as TagColorSchemeProp}>Tag</Tag>
-              </>
+              </div>
             ))}
           </div>
         </div>
