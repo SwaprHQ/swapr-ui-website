@@ -34,8 +34,8 @@ import {
   SwitcherBody,
   SwitcherHeader,
   SwitcherTab,
+  SwitcherPanel,
 } from "@/ui/Switcher";
-import { Tab } from "@headlessui/react";
 
 const fullConfig = resolveConfig(tailwindConfig);
 
@@ -330,21 +330,21 @@ export default function UI() {
                   <SwitcherTab>cancelled</SwitcherTab>
                 </SwitcherHeader>
                 <SwitcherBody className="mt-2">
-                  <Tab.Panel>
+                  <SwitcherPanel>
                     <div className="bg-surface-primary-accent-1 p-5 rounded-4">
                       Active
                     </div>
-                  </Tab.Panel>
-                  <Tab.Panel>
+                  </SwitcherPanel>
+                  <SwitcherPanel>
                     <div className="bg-surface-info-accent-1 p-5 rounded-4">
                       Complete
                     </div>
-                  </Tab.Panel>
-                  <Tab.Panel>
+                  </SwitcherPanel>
+                  <SwitcherPanel>
                     <div className="bg-surface-danger-accent-1 p-5 rounded-4">
                       Cancelled
                     </div>
-                  </Tab.Panel>
+                  </SwitcherPanel>
                 </SwitcherBody>
               </Switcher>
             </div>

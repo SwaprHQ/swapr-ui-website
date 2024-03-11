@@ -58,3 +58,5 @@ export const SwitcherTab = ({ children, ...props }: SwitcherProps) => {
     </Tab>
   );
 };
+
+export const SwitcherPanel = Tab.Panel;
