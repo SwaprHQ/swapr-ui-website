@@ -26,9 +26,16 @@ import {
   warningToast,
   Tag,
   TagColorSchemeProp,
+  Dialog,
+  DialogContent,
+  DialogTrigger,
+  DialogClose,
+  DialogHeader,
+  DialogBody,
+  DialogFooter,
 } from "@/ui";
 import { ThemeSwitch } from "@/components";
-import { PropsWithChildren } from "react";
+import { Fragment, PropsWithChildren, useState } from "react";
 
 const fullConfig = resolveConfig(tailwindConfig);
 
@@ -43,7 +50,7 @@ function extractStringValuesFromObject(object: any): string[] {
         keys.push(key);
       } else if (typeof value === "object" && value) {
         const nestedKeys = extractStringValuesFromObject(value);
-        keys.push(...nestedKeys.map(nestedKey => `${key}-${nestedKey}`));
+        keys.push(...nestedKeys.map((nestedKey) => `${key}-${nestedKey}`));
       }
     }
   }
@@ -235,8 +242,14 @@ const TagColorSchemes = [
 ];
 
 export default function UI() {
+  const [openModal, setOpenModal] = useState(false);
+
+  const closeModal = () => {
+    setOpenModal(false);
+  };
+
   return (
-    <main className="px-5 mx-auto my-10 max-w-screen-xl">
+    <main className="px-5 mx-auto my-10 max-w-screen-xl overflow-auto">
       <ThemeSwitch />
       <div className="pb-12 my-12 space-y-5">
         <h1 className="text-3xl">Swapr UI</h1>
@@ -299,22 +312,85 @@ export default function UI() {
           </div>
         </div>
         <div className="space-y-4 pb-5 border-b">
+          <h2 className="text-2xl font-semibold">Modal</h2>
+          <div className="flex space-x-4">
+            <Dialog>
+              <DialogTrigger asChild>
+                <Button>Open</Button>
+              </DialogTrigger>
+              <DialogContent append="bottom">
+                <DialogHeader>Select a token</DialogHeader>
+                <DialogBody className="px-4 pb-6">
+                  <ul>
+                    {Array(15)
+                      .fill("")
+                      .map((_, i) => (
+                        <li key={i}>
+                          This action cannot be undone. This will permanently
+                          delete your account and remove your data from our
+                          servers.
+                        </li>
+                      ))}
+                  </ul>
+                </DialogBody>
+              </DialogContent>
+            </Dialog>
+            <Dialog open={openModal} onOpenChange={setOpenModal}>
+              <DialogTrigger asChild>
+                <Button>Open</Button>
+              </DialogTrigger>
+              <DialogContent>
+                <DialogHeader size="xl" className="text-center">
+                  <DialogClose position="left" size="xl">
+                    <Button variant="ghost">
+                      <Icon name="arrow-left" />
+                    </Button>
+                  </DialogClose>
+                  Confirm Swap
+                </DialogHeader>
+                <DialogBody className="mx-10 mb-6">
+                  This action cannot be undone. This will permanently delete
+                  your account and remove your data from our servers.
+                </DialogBody>
+                <DialogFooter>
+                  <Button
+                    width="full"
+                    colorScheme="primary"
+                    variant="pastel"
+                    onClick={closeModal}
+                  >
+                    Cancel
+                  </Button>
+                  <Button
+                    width="full"
+                    colorScheme="success"
+                    variant="pastel"
+                    onClick={closeModal}
+                  >
+                    Confirm
+                  </Button>
+                </DialogFooter>
+              </DialogContent>
+            </Dialog>
+          </div>
+        </div>
+        <div className="space-y-4 pb-5 border-b">
           <h2 className="text-2xl font-semibold">Tag</h2>
           <div className="flex space-x-6">
-            {TagColorSchemes.map(color => (
-              <>
+            {TagColorSchemes.map((color) => (
+              <Fragment key={color}>
                 <Tag colorScheme={color as TagColorSchemeProp} size="sm">
                   Tag
                 </Tag>
                 <Tag colorScheme={color as TagColorSchemeProp}>Tag</Tag>
-              </>
+              </Fragment>
             ))}
           </div>
         </div>
         <div className="space-y-4 pb-5 border-b">
           <h2 className="text-2xl font-semibold">Icons</h2>
           <div className="flex flex-wrap space-x-4 space-y-2 md:space-y-0">
-            {Object.keys(iconMap).map(iconName => (
+            {Object.keys(iconMap).map((iconName) => (
               <div
                 className="flex flex-col items-center space-y-2"
                 key={iconName}
@@ -422,11 +498,11 @@ export default function UI() {
         <div className="space-y-4 pb-5 border-b">
           <h2 className="text-2xl font-semibold">Colors</h2>
           <div className="space-y-2">
-            {Object.keys(tailwindColors).map(key => (
+            {Object.keys(tailwindColors).map((key) => (
               <div key={key} className="space-y-2">
                 <p className="text-xl capitalize">{key}</p>
                 <div className="space-y-2">
-                  {tailwindColors[key].map(color => (
+                  {tailwindColors[key].map((color) => (
                     <div key={color} className="flex space-x-4">
                       <p>{`${key}-${color}`}</p>
                       <div className={`bg-${key}-${color} w-20 h-10`} />
