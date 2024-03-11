@@ -29,13 +29,7 @@ import {
 } from "@/ui";
 import { ThemeSwitch } from "@/components";
 import { PropsWithChildren } from "react";
-import {
-  Switcher,
-  SwitcherBody,
-  SwitcherHeader,
-  SwitcherTab,
-  SwitcherPanel,
-} from "@/ui/Switcher";
+import { TabGroup, TabBody, TabHeader, TabPanel, TabStyled } from "@/ui/Tabs";
 
 const fullConfig = resolveConfig(tailwindConfig);
 
@@ -306,10 +300,10 @@ export default function UI() {
           </div>
         </div>
         <div className="space-y-4 pb-5 border-b">
-          <h2 className="text-2xl font-semibold">Switcher</h2>
+          <h2 className="text-2xl font-semibold">Tabs</h2>
           <div className="space-y-5">
             <p>
-              Switcher is based on{" "}
+              Tabs is based on{" "}
               <a
                 className="text-text-primary-main hover:underline"
                 href="https://headlessui.com/react/tabs"
@@ -319,34 +313,45 @@ export default function UI() {
               , check out their docs for usage.
             </p>
             <div className="w-full max-w-md px-2 sm:px-0">
-              <Switcher
+              <TabGroup
                 onChange={(index: number) =>
                   console.log("Changed selected tab to:", index)
                 }
               >
-                <SwitcherHeader>
-                  <SwitcherTab>active</SwitcherTab>
-                  <SwitcherTab>complete</SwitcherTab>
-                  <SwitcherTab>cancelled</SwitcherTab>
-                </SwitcherHeader>
-                <SwitcherBody className="mt-2">
-                  <SwitcherPanel>
+                <TabHeader>
+                  <TabStyled>All bets</TabStyled>
+                  <TabStyled>
+                    Active
+                    <div className="bg-surface-surface-0 text-2xs border border-outline-low-em rounded-6 p-1 px-1.5 ml-2">
+                      01
+                    </div>
+                  </TabStyled>
+                  <TabStyled>Unredeemed</TabStyled>
+                  <TabStyled>Complete</TabStyled>
+                </TabHeader>
+                <TabBody className="mt-2">
+                  <TabPanel>
+                    <div className="bg-surface-primary-accent-1 p-5 rounded-4">
+                      All bets
+                    </div>
+                  </TabPanel>
+                  <TabPanel>
                     <div className="bg-surface-primary-accent-1 p-5 rounded-4">
                       Active
                     </div>
-                  </SwitcherPanel>
-                  <SwitcherPanel>
-                    <div className="bg-surface-info-accent-1 p-5 rounded-4">
+                  </TabPanel>
+                  <TabPanel>
+                    <div className="bg-surface-danger-accent-1 p-5 rounded-4">
+                      Unredeemed
+                    </div>
+                  </TabPanel>
+                  <TabPanel>
+                    <div className="bg-surface-warning-accent-1 p-5 rounded-4">
                       Complete
                     </div>
-                  </SwitcherPanel>
-                  <SwitcherPanel>
-                    <div className="bg-surface-danger-accent-1 p-5 rounded-4">
-                      Cancelled
-                    </div>
-                  </SwitcherPanel>
-                </SwitcherBody>
-              </Switcher>
+                  </TabPanel>
+                </TabBody>
+              </TabGroup>
             </div>
           </div>
         </div>
