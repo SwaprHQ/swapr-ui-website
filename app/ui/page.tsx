@@ -308,34 +308,36 @@ export default function UI() {
         <div className="space-y-4 pb-5 border-b">
           <h2 className="text-2xl font-semibold">Switcher</h2>
           <div className="flex space-x-6">
-            <Switcher
-              onChange={(index: number) =>
-                console.log("Changed selected tab to:", index)
-              }
-            >
-              <SwitcherHeader>
-                <SwitcherTab>active</SwitcherTab>
-                <SwitcherTab>complete</SwitcherTab>
-                <SwitcherTab>cancelled</SwitcherTab>
-              </SwitcherHeader>
-              <SwitcherBody className="mt-2">
-                <Tab.Panel>
-                  <div className="bg-surface-info-accent-1 p-5 rounded-4">
-                    Active
-                  </div>
-                </Tab.Panel>
-                <Tab.Panel>
-                  <div className="bg-surface-info-accent-1 p-5 rounded-4">
-                    complete
-                  </div>
-                </Tab.Panel>
-                <Tab.Panel>
-                  <div className="bg-surface-info-accent-1 p-5 rounded-4">
-                    cancelled
-                  </div>
-                </Tab.Panel>
-              </SwitcherBody>
-            </Switcher>
+            <div className="w-full max-w-md px-2 sm:px-0">
+              <Switcher
+                onChange={(index: number) =>
+                  console.log("Changed selected tab to:", index)
+                }
+              >
+                <SwitcherHeader>
+                  <SwitcherTab>active</SwitcherTab>
+                  <SwitcherTab>complete</SwitcherTab>
+                  <SwitcherTab>cancelled</SwitcherTab>
+                </SwitcherHeader>
+                <SwitcherBody className="mt-2">
+                  <Tab.Panel>
+                    <div className="bg-surface-info-accent-1 p-5 rounded-4">
+                      Active
+                    </div>
+                  </Tab.Panel>
+                  <Tab.Panel>
+                    <div className="bg-surface-info-accent-1 p-5 rounded-4">
+                      complete
+                    </div>
+                  </Tab.Panel>
+                  <Tab.Panel>
+                    <div className="bg-surface-info-accent-1 p-5 rounded-4">
+                      cancelled
+                    </div>
+                  </Tab.Panel>
+                </SwitcherBody>
+              </Switcher>
+            </div>
           </div>
         </div>
         <div className="space-y-4 pb-5 border-b">

@@ -18,12 +18,10 @@ export const Switcher = ({ children, ...props }: SwitcherProps) => {
   );
 
   return (
-    <div className="w-full max-w-md px-2 sm:px-0">
-      <Tab.Group {...props}>
-        {headerChildren}
-        {bodyChildren}
-      </Tab.Group>
-    </div>
+    <Tab.Group {...props}>
+      {headerChildren}
+      {bodyChildren}
+    </Tab.Group>
   );
 };
 
