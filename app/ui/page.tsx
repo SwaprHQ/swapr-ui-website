@@ -29,7 +29,8 @@ import {
 } from "@/ui";
 import { ThemeSwitch } from "@/components";
 import { PropsWithChildren } from "react";
-import Switcher, {
+import {
+  Switcher,
   SwitcherBody,
   SwitcherHeader,
   SwitcherTab,
@@ -308,7 +309,9 @@ export default function UI() {
           <h2 className="text-2xl font-semibold">Switcher</h2>
           <div className="flex space-x-6">
             <Switcher
-              onChange={index => console.log("Changed selected tab to:", index)}
+              onChange={(index: number) =>
+                console.log("Changed selected tab to:", index)
+              }
             >
               <SwitcherHeader>
                 <SwitcherTab>active</SwitcherTab>

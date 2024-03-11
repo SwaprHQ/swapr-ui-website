@@ -1,4 +1,4 @@
-import { Children, JSX, PropsWithChildren, ReactNode } from "react";
+import { Children, ReactNode } from "react";
 import { twMerge } from "tailwind-merge";
 import { Tab } from "@headlessui/react";
 
@@ -7,7 +7,7 @@ interface SwitcherProps {
   [key: string]: any;
 }
 
-export default function Switcher({ children, ...props }: SwitcherProps) {
+export const Switcher = ({ children, ...props }: SwitcherProps) => {
   if (!children) return null;
 
   const headerChildren = Children.toArray(children).filter(
@@ -25,9 +25,9 @@ export default function Switcher({ children, ...props }: SwitcherProps) {
       </Tab.Group>
     </div>
   );
-}
+};
 
-export function SwitcherHeader({ children, ...props }: PropsWithChildren) {
+export const SwitcherHeader = ({ children, ...props }: SwitcherProps) => {
   return (
     <Tab.List
       className="flex space-x-1 bg-surface-surface-2 p-1 rounded-12"
@@ -36,13 +36,13 @@ export function SwitcherHeader({ children, ...props }: PropsWithChildren) {
       {children}
     </Tab.List>
   );
-}
+};
 
-export function SwitcherBody({ children, ...props }: PropsWithChildren) {
+export const SwitcherBody = ({ children, ...props }: SwitcherProps) => {
   return <Tab.Panels {...props}>{children}</Tab.Panels>;
-}
+};
 
-export const SwitcherTab = ({ children, ...props }: PropsWithChildren) => {
+export const SwitcherTab = ({ children, ...props }: SwitcherProps) => {
   return (
     <Tab
       className={({ selected }) =>
