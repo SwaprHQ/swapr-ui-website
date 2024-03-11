@@ -246,7 +246,7 @@ export default function UI() {
     <main className="px-5 mx-auto my-10 max-w-screen-xl">
       <ThemeSwitch />
       <div className="pb-12 my-12 space-y-5">
-        <h1 className="text-3xl">Swapr UI</h1>
+        <h1 className="text-3xl font-bold">Swapr UI</h1>
         <div className="space-y-4 pb-5 border-b">
           <h2 className="text-2xl font-semibold">Buttons</h2>
           {buttonsList.map((row, i) => (
