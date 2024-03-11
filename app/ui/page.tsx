@@ -307,7 +307,17 @@ export default function UI() {
         </div>
         <div className="space-y-4 pb-5 border-b">
           <h2 className="text-2xl font-semibold">Switcher</h2>
-          <div className="flex space-x-6">
+          <div className="space-y-5">
+            <p>
+              Switcher is based on{" "}
+              <a
+                className="text-text-primary-main hover:underline"
+                href="https://headlessui.com/react/tabs"
+              >
+                headlessui tabs
+              </a>
+              , check out their docs for usage.
+            </p>
             <div className="w-full max-w-md px-2 sm:px-0">
               <Switcher
                 onChange={(index: number) =>
@@ -321,18 +331,18 @@ export default function UI() {
                 </SwitcherHeader>
                 <SwitcherBody className="mt-2">
                   <Tab.Panel>
-                    <div className="bg-surface-info-accent-1 p-5 rounded-4">
+                    <div className="bg-surface-primary-accent-1 p-5 rounded-4">
                       Active
                     </div>
                   </Tab.Panel>
                   <Tab.Panel>
                     <div className="bg-surface-info-accent-1 p-5 rounded-4">
-                      complete
+                      Complete
                     </div>
                   </Tab.Panel>
                   <Tab.Panel>
-                    <div className="bg-surface-info-accent-1 p-5 rounded-4">
-                      cancelled
+                    <div className="bg-surface-danger-accent-1 p-5 rounded-4">
+                      Cancelled
                     </div>
                   </Tab.Panel>
                 </SwitcherBody>
