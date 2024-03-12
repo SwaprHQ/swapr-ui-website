@@ -1,3 +1,5 @@
+"use client";
+
 import { Children, Fragment, ReactNode } from "react";
 import { Tab } from "@headlessui/react";
 import { ChipButton } from "@/ui";
