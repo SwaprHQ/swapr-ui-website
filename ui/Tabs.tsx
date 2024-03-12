@@ -25,7 +25,10 @@ export const TabGroup = ({ children, ...props }: TabsProps) => {
   );
 };
 
-export const TabHeader = ({ children, ...props }: TabsProps) => {
+export const TabHeader = ({
+  children,
+  ...props
+}: React.HTMLAttributes<HTMLDivElement>) => {
   return (
     <Tab.List className="flex space-x-3" {...props}>
       {children}
@@ -33,7 +36,10 @@ export const TabHeader = ({ children, ...props }: TabsProps) => {
   );
 };
 
-export const TabBody = ({ children, ...props }: TabsProps) => {
+export const TabBody = ({
+  children,
+  ...props
+}: React.HTMLAttributes<HTMLDivElement>) => {
   return <Tab.Panels {...props}>{children}</Tab.Panels>;
 };
 
