@@ -1,6 +1,6 @@
-import { Children, ReactNode } from "react";
-import { twMerge } from "tailwind-merge";
+import { Children, Fragment, ReactNode } from "react";
 import { Tab } from "@headlessui/react";
+import { ChipButton } from "@/ui";
 
 interface TabsProps {
   children: ReactNode;
@@ -43,20 +43,15 @@ export const TabBody = ({
   return <Tab.Panels {...props}>{children}</Tab.Panels>;
 };
 
-export const TabStyled = ({ children, ...props }: TabsProps) => {
+export const TabStyled = ({ children, selected, ...props }: TabsProps) => {
   return (
-    <Tab
-      className={({ selected }) =>
-        twMerge(
-          "flex items-center h-10 px-3 text-sm font-medium leading-5 rounded-32 outline-none",
-          selected
-            ? "shadow bg-surface-surface-1 shadow-3 border-outline-med-em text-text-high-em ring ring-outline-med-em"
-            : "text-text-low-em bg-surface-surface-2 hover:bg-surface-surface-3"
-        )
-      }
-      {...props}
-    >
-      {children}
+    <Tab as={Fragment} {...props}>
+      {({ selected }) => (
+        /* Use the `selected` state to conditionally style the selected tab. */
+        <ChipButton active={selected} colorScheme="secondary">
+          {children}
+        </ChipButton>
+      )}
     </Tab>
   );
 };
