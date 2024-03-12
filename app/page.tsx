@@ -1,3 +1,5 @@
+"use client";
+
 import { Button } from "@/ui";
 import Link from "next/link";
 
