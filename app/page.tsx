@@ -1,7 +1,20 @@
+import { Button } from "@/ui";
+import Link from "next/link";
+
 export default function Home() {
   return (
-    <main className="bg-surface-neutral-alt-white flex min-h-screen flex-col items-center justify-between p-24">
-      <h1>New Swapr UI</h1>
+    <main className="bg-surface-neutral-alt-white bg-[url('/lines.svg')] h-screen bg-no-repeat bg-cover flex justify-center">
+      <div className="pt-48 space-y-6 text-center">
+        <h1 className="text-[58px] leading-[64px] font-bold">
+          Build dapps fast
+        </h1>
+        <p className="text-lg text-text-med-em">
+          A set of components made to help you ship web3 apps faster than ever.
+        </p>
+        <Link href="/ui" className="block">
+          <Button className="mx-auto">Explore components</Button>
+        </Link>
+      </div>
     </main>
   );
 }

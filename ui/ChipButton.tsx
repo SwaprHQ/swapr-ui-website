@@ -4,7 +4,7 @@ import { ButtonHTMLAttributes } from "react";
 export const chipButtonStyles = cva(
   [
     "flex items-center justify-center",
-    "select-none font-semibold rounded-100",
+    "select-none font-semibold rounded-100 text-nowrap",
     "disabled:text-text-disabled disabled:cursor-not-allowed disabled:ring-0 disabled:shadow-inherit disabled:bg-surface-disabled-low-em disabled:border-0",
     "focus-visible:outline-none focus-visible:ring-[3px]",
     "active:ring-[3px]",

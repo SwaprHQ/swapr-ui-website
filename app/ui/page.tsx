@@ -33,8 +33,14 @@ import {
   DialogHeader,
   DialogBody,
   DialogFooter,
+  TabGroup,
+  TabBody,
+  TabHeader,
+  TabPanel,
+  TabStyled,
 } from "@/ui";
 import { ThemeSwitch } from "@/components";
+
 import { Fragment, PropsWithChildren, useState } from "react";
 
 const fullConfig = resolveConfig(tailwindConfig);
@@ -50,7 +56,7 @@ function extractStringValuesFromObject(object: any): string[] {
         keys.push(key);
       } else if (typeof value === "object" && value) {
         const nestedKeys = extractStringValuesFromObject(value);
-        keys.push(...nestedKeys.map((nestedKey) => `${key}-${nestedKey}`));
+        keys.push(...nestedKeys.map(nestedKey => `${key}-${nestedKey}`));
       }
     }
   }
@@ -252,7 +258,7 @@ export default function UI() {
     <main className="px-5 mx-auto my-10 max-w-screen-xl overflow-auto">
       <ThemeSwitch />
       <div className="pb-12 my-12 space-y-5">
-        <h1 className="text-3xl">Swapr UI</h1>
+        <h1 className="text-3xl font-bold">Swapr UI</h1>
         <div className="space-y-4 pb-5 border-b">
           <h2 className="text-2xl font-semibold">Buttons</h2>
           {buttonsList.map((row, i) => (
@@ -312,72 +318,128 @@ export default function UI() {
           </div>
         </div>
         <div className="space-y-4 pb-5 border-b">
-          <h2 className="text-2xl font-semibold">Modal</h2>
-          <div className="flex space-x-4">
-            <Dialog>
-              <DialogTrigger asChild>
-                <Button>Open</Button>
-              </DialogTrigger>
-              <DialogContent append="bottom">
-                <DialogHeader>Select a token</DialogHeader>
-                <DialogBody className="px-4 pb-6">
-                  <ul>
-                    {Array(15)
-                      .fill("")
-                      .map((_, i) => (
-                        <li key={i}>
-                          This action cannot be undone. This will permanently
-                          delete your account and remove your data from our
-                          servers.
-                        </li>
-                      ))}
-                  </ul>
-                </DialogBody>
-              </DialogContent>
-            </Dialog>
-            <Dialog open={openModal} onOpenChange={setOpenModal}>
-              <DialogTrigger asChild>
-                <Button>Open</Button>
-              </DialogTrigger>
-              <DialogContent>
-                <DialogHeader size="xl" className="text-center">
-                  <DialogClose position="left" size="xl">
-                    <Button variant="ghost">
-                      <Icon name="arrow-left" />
+          <h2 className="text-2xl font-semibold">Tabs</h2>
+          <div className="space-y-5">
+            <p>
+              Tabs is based on{" "}
+              <a
+                className="text-text-primary-main hover:underline"
+                href="https://headlessui.com/react/tabs"
+              >
+                headlessui tabs
+              </a>
+              , check out their docs for usage.
+            </p>
+            <div className="w-full max-w-md px-2 sm:px-0">
+              <TabGroup
+                onChange={(index: number) =>
+                  console.log("Changed selected tab to:", index)
+                }
+              >
+                <TabHeader>
+                  <TabStyled>All bets</TabStyled>
+                  <TabStyled>
+                    Active
+                    <div className="bg-surface-surface-0 text-2xs border border-outline-low-em rounded-6 p-1 px-1.5 ml-2">
+                      01
+                    </div>
+                  </TabStyled>
+                  <TabStyled>Unredeemed</TabStyled>
+                  <TabStyled>Complete</TabStyled>
+                </TabHeader>
+                <TabBody className="mt-2">
+                  <TabPanel>
+                    <div className="bg-surface-primary-accent-1 p-5 rounded-4">
+                      All bets
+                    </div>
+                  </TabPanel>
+                  <TabPanel>
+                    <div className="bg-surface-primary-accent-1 p-5 rounded-4">
+                      Active
+                    </div>
+                  </TabPanel>
+                  <TabPanel>
+                    <div className="bg-surface-danger-accent-1 p-5 rounded-4">
+                      Unredeemed
+                    </div>
+                  </TabPanel>
+                  <TabPanel>
+                    <div className="bg-surface-warning-accent-1 p-5 rounded-4">
+                      Complete
+                    </div>
+                  </TabPanel>
+                </TabBody>
+              </TabGroup>
+            </div>
+          </div>
+          <div className="space-y-4 pb-5 border-b">
+            <h2 className="text-2xl font-semibold">Modal</h2>
+            <div className="flex space-x-4">
+              <Dialog>
+                <DialogTrigger asChild>
+                  <Button>Open</Button>
+                </DialogTrigger>
+                <DialogContent append="bottom">
+                  <DialogHeader>Select a token</DialogHeader>
+                  <DialogBody className="px-4 pb-6">
+                    <ul>
+                      {Array(15)
+                        .fill("")
+                        .map((_, i) => (
+                          <li key={i}>
+                            This action cannot be undone. This will permanently
+                            delete your account and remove your data from our
+                            servers.
+                          </li>
+                        ))}
+                    </ul>
+                  </DialogBody>
+                </DialogContent>
+              </Dialog>
+              <Dialog open={openModal} onOpenChange={setOpenModal}>
+                <DialogTrigger asChild>
+                  <Button>Open</Button>
+                </DialogTrigger>
+                <DialogContent>
+                  <DialogHeader size="xl" className="text-center">
+                    <DialogClose position="left" size="xl">
+                      <Button variant="ghost">
+                        <Icon name="arrow-left" />
+                      </Button>
+                    </DialogClose>
+                    Confirm Swap
+                  </DialogHeader>
+                  <DialogBody className="mx-10 mb-6">
+                    This action cannot be undone. This will permanently delete
+                    your account and remove your data from our servers.
+                  </DialogBody>
+                  <DialogFooter>
+                    <Button
+                      width="full"
+                      colorScheme="primary"
+                      variant="pastel"
+                      onClick={closeModal}
+                    >
+                      Cancel
                     </Button>
-                  </DialogClose>
-                  Confirm Swap
-                </DialogHeader>
-                <DialogBody className="mx-10 mb-6">
-                  This action cannot be undone. This will permanently delete
-                  your account and remove your data from our servers.
-                </DialogBody>
-                <DialogFooter>
-                  <Button
-                    width="full"
-                    colorScheme="primary"
-                    variant="pastel"
-                    onClick={closeModal}
-                  >
-                    Cancel
-                  </Button>
-                  <Button
-                    width="full"
-                    colorScheme="success"
-                    variant="pastel"
-                    onClick={closeModal}
-                  >
-                    Confirm
-                  </Button>
-                </DialogFooter>
-              </DialogContent>
-            </Dialog>
+                    <Button
+                      width="full"
+                      colorScheme="success"
+                      variant="pastel"
+                      onClick={closeModal}
+                    >
+                      Confirm
+                    </Button>
+                  </DialogFooter>
+                </DialogContent>
+              </Dialog>
+            </div>
           </div>
         </div>
         <div className="space-y-4 pb-5 border-b">
           <h2 className="text-2xl font-semibold">Tag</h2>
           <div className="flex space-x-6">
-            {TagColorSchemes.map((color) => (
+            {TagColorSchemes.map(color => (
               <Fragment key={color}>
                 <Tag colorScheme={color as TagColorSchemeProp} size="sm">
                   Tag
@@ -390,7 +452,7 @@ export default function UI() {
         <div className="space-y-4 pb-5 border-b">
           <h2 className="text-2xl font-semibold">Icons</h2>
           <div className="flex flex-wrap space-x-4 space-y-2 md:space-y-0">
-            {Object.keys(iconMap).map((iconName) => (
+            {Object.keys(iconMap).map(iconName => (
               <div
                 className="flex flex-col items-center space-y-2"
                 key={iconName}
@@ -498,11 +560,11 @@ export default function UI() {
         <div className="space-y-4 pb-5 border-b">
           <h2 className="text-2xl font-semibold">Colors</h2>
           <div className="space-y-2">
-            {Object.keys(tailwindColors).map((key) => (
+            {Object.keys(tailwindColors).map(key => (
               <div key={key} className="space-y-2">
                 <p className="text-xl capitalize">{key}</p>
                 <div className="space-y-2">
-                  {tailwindColors[key].map((color) => (
+                  {tailwindColors[key].map(color => (
                     <div key={color} className="flex space-x-4">
                       <p>{`${key}-${color}`}</p>
                       <div className={`bg-${key}-${color} w-20 h-10`} />

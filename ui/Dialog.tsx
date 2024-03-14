@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import * as DialogPrimitive from "@radix-ui/react-dialog";
 import { cva, cx } from "class-variance-authority";
