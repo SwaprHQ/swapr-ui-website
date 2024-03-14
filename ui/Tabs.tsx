@@ -1,20 +1,19 @@
 "use client";
 
-import { Children, Fragment, ReactNode } from "react";
-import { Tab } from "@headlessui/react";
+import { Children, Fragment, PropsWithChildren } from "react";
+import { Tab, TabProps } from "@headlessui/react";
 import { ChipButton } from "@/ui";
 
-interface TabsProps {
-  children: ReactNode;
-  [key: string]: any;
-}
-
-export const TabGroup = ({ children, ...props }: TabsProps) => {
+export const TabGroup = ({
+  children,
+  ...props
+}: PropsWithChildren<TabProps<React.ElementType>>) => {
   if (!children) return null;
 
   const headerChildren = Children.toArray(children).filter(
     child => (child as any)?.type === TabHeader
   );
+
   const bodyChildren = Children.toArray(children).filter(
     child => (child as any)?.type === TabBody
   );
@@ -45,7 +44,11 @@ export const TabBody = ({
   return <Tab.Panels {...props}>{children}</Tab.Panels>;
 };
 
-export const TabStyled = ({ children, selected, ...props }: TabsProps) => {
+interface TabStyledProps extends React.HTMLAttributes<HTMLDivElement> {
+  selected?: boolean;
+}
+
+export const TabStyled = ({ children, selected, ...props }: TabStyledProps) => {
   return (
     <Tab as={Fragment} {...props}>
       {({ selected }) => (
