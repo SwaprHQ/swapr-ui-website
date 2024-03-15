@@ -2,7 +2,7 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ## Swapr UI
 
-A set of component mean to build dapps fast!
+A set of components to build dapps fast!
 
 <img width="1748" alt="image" src="https://github.com/SwaprHQ/swapr-ui/assets/5664434/d412fc81-c0e9-4030-a9f9-d1bb4f3ea0d1">
 
