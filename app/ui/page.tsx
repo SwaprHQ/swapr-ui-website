@@ -38,9 +38,11 @@ import {
   TabHeader,
   TabPanel,
   TabStyled,
+  ToggleGroup,
+  ToogleGroupOption,
+  ToogleOptionSizeProp,
 } from "@/ui";
 import { ThemeSwitch } from "@/components";
-
 import { Fragment, PropsWithChildren, useState } from "react";
 
 const fullConfig = resolveConfig(tailwindConfig);
@@ -220,6 +222,8 @@ const ChipBittonChildren = (
   </>
 );
 
+const toggleGroupOptionSizes: ToogleOptionSizeProp[] = ["xs", "sm", "md", "lg"];
+
 const chipButtonList: Array<Array<ChipButtonProps>> = [
   [
     {
@@ -253,13 +257,18 @@ export default function UI() {
   const closeModal = () => {
     setOpenModal(false);
   };
+  // radioGroup eg.
+  let [slipage, setSlipage] = useState("auto");
 
   return (
     <main className="px-5 mx-auto my-10 max-w-screen-xl overflow-auto">
       <ThemeSwitch />
-      <div className="pb-12 my-12 space-y-5">
-        <h1 className="text-3xl font-bold">Swapr UI</h1>
-        <div className="space-y-4 pb-5 border-b">
+      <div className="pb-12 my-12 space-y-5 divide-y divide-outline-primary-low-em">
+        <div className="space-y-4">
+          <h1 className="text-3xl font-bold">Swapr UI</h1>
+          <p>A set of components to build apps faster.</p>
+        </div>
+        <Section>
           <h2 className="text-2xl font-semibold">Buttons</h2>
           {buttonsList.map((row, i) => (
             <div key={i} className="flex space-x-2">
@@ -268,8 +277,8 @@ export default function UI() {
               ))}
             </div>
           ))}
-        </div>
-        <div className="space-y-4 pb-5 border-b">
+        </Section>
+        <Section>
           <h2 className="text-2xl font-semibold">Chip Buttons</h2>
           {chipButtonList.map((row, i) => (
             <div key={i} className="flex space-x-2">
@@ -278,8 +287,8 @@ export default function UI() {
               ))}
             </div>
           ))}
-        </div>
-        <div className="space-y-4 pb-5 border-b">
+        </Section>
+        <Section>
           <h2 className="text-2xl font-semibold">Toast</h2>
           <div className="flex space-x-4">
             <Button onClick={() => toast({ children: "Default Toast" })}>
@@ -316,8 +325,71 @@ export default function UI() {
               Open Warning Toast
             </Button>
           </div>
-        </div>
-        <div className="space-y-4 pb-5 border-b">
+        </Section>
+        <Section>
+          <h2 className="text-2xl font-semibold">Modal</h2>
+          <div className="flex space-x-4">
+            <Dialog>
+              <DialogTrigger asChild>
+                <Button>Open</Button>
+              </DialogTrigger>
+              <DialogContent append="bottom">
+                <DialogHeader>Select a token</DialogHeader>
+                <DialogBody className="px-4 pb-6">
+                  <ul>
+                    {Array(15)
+                      .fill("")
+                      .map((_, i) => (
+                        <li key={i}>
+                          This action cannot be undone. This will permanently
+                          delete your account and remove your data from our
+                          servers.
+                        </li>
+                      ))}
+                  </ul>
+                </DialogBody>
+              </DialogContent>
+            </Dialog>
+            <Dialog open={openModal} onOpenChange={setOpenModal}>
+              <DialogTrigger asChild>
+                <Button>Open</Button>
+              </DialogTrigger>
+              <DialogContent>
+                <DialogHeader size="xl" className="text-center">
+                  <DialogClose position="left" size="xl">
+                    <Button variant="ghost">
+                      <Icon name="arrow-left" />
+                    </Button>
+                  </DialogClose>
+                  Confirm Swap
+                </DialogHeader>
+                <DialogBody className="mx-10 mb-6">
+                  This action cannot be undone. This will permanently delete
+                  your account and remove your data from our servers.
+                </DialogBody>
+                <DialogFooter>
+                  <Button
+                    width="full"
+                    colorScheme="primary"
+                    variant="pastel"
+                    onClick={closeModal}
+                  >
+                    Cancel
+                  </Button>
+                  <Button
+                    width="full"
+                    colorScheme="success"
+                    variant="pastel"
+                    onClick={closeModal}
+                  >
+                    Confirm
+                  </Button>
+                </DialogFooter>
+              </DialogContent>
+            </Dialog>
+          </div>
+        </Section>
+        <Section>
           <h2 className="text-2xl font-semibold">Tabs</h2>
           <div className="space-y-5">
             <p>
@@ -372,71 +444,41 @@ export default function UI() {
               </TabGroup>
             </div>
           </div>
-          <div className="space-y-4 pb-5 border-b">
-            <h2 className="text-2xl font-semibold">Modal</h2>
-            <div className="flex space-x-4">
-              <Dialog>
-                <DialogTrigger asChild>
-                  <Button>Open</Button>
-                </DialogTrigger>
-                <DialogContent append="bottom">
-                  <DialogHeader>Select a token</DialogHeader>
-                  <DialogBody className="px-4 pb-6">
-                    <ul>
-                      {Array(15)
-                        .fill("")
-                        .map((_, i) => (
-                          <li key={i}>
-                            This action cannot be undone. This will permanently
-                            delete your account and remove your data from our
-                            servers.
-                          </li>
-                        ))}
-                    </ul>
-                  </DialogBody>
-                </DialogContent>
-              </Dialog>
-              <Dialog open={openModal} onOpenChange={setOpenModal}>
-                <DialogTrigger asChild>
-                  <Button>Open</Button>
-                </DialogTrigger>
-                <DialogContent>
-                  <DialogHeader size="xl" className="text-center">
-                    <DialogClose position="left" size="xl">
-                      <Button variant="ghost">
-                        <Icon name="arrow-left" />
-                      </Button>
-                    </DialogClose>
-                    Confirm Swap
-                  </DialogHeader>
-                  <DialogBody className="mx-10 mb-6">
-                    This action cannot be undone. This will permanently delete
-                    your account and remove your data from our servers.
-                  </DialogBody>
-                  <DialogFooter>
-                    <Button
-                      width="full"
-                      colorScheme="primary"
-                      variant="pastel"
-                      onClick={closeModal}
-                    >
-                      Cancel
-                    </Button>
-                    <Button
-                      width="full"
-                      colorScheme="success"
-                      variant="pastel"
-                      onClick={closeModal}
-                    >
-                      Confirm
-                    </Button>
-                  </DialogFooter>
-                </DialogContent>
-              </Dialog>
-            </div>
+        </Section>
+        <Section>
+          <div className="text-2xl font-semibold">ToogleGroup</div>
+          <p>
+            Based on Radio Group component from Headless ui,{" "}
+            <a
+              className="text-surface-primary-main hover:underline"
+              href="https://headlessui.com/react/radio-group"
+            >
+              check their docs
+            </a>
+            .
+          </p>
+          <div className="divide-x divide-surface-surface-2 flex items-center space-x-5">
+            {toggleGroupOptionSizes.map(size => (
+              <div key={size} className="pl-4">
+                <p>Size: {size}</p>
+                <ToggleGroup value={slipage} onChange={setSlipage}>
+                  <ToogleGroupOption value="auto" size={size}>
+                    auto
+                  </ToogleGroupOption>
+                  <ToogleGroupOption value="0.1" size={size}>
+                    0.1%
+                  </ToogleGroupOption>
+                  <ToogleGroupOption value="0.5" size={size}>
+                    0.5%
+                  </ToogleGroupOption>
+                </ToggleGroup>
+              </div>
+            ))}
           </div>
-        </div>
-        <div className="space-y-4 pb-5 border-b">
+
+          <div>Selected: {slipage}</div>
+        </Section>
+        <Section>
           <h2 className="text-2xl font-semibold">Tag</h2>
           <div className="flex space-x-6">
             {TagColorSchemes.map(color => (
@@ -448,8 +490,8 @@ export default function UI() {
               </Fragment>
             ))}
           </div>
-        </div>
-        <div className="space-y-4 pb-5 border-b">
+        </Section>
+        <Section>
           <h2 className="text-2xl font-semibold">Icons</h2>
           <div className="flex flex-wrap space-x-4 space-y-2 md:space-y-0">
             {Object.keys(iconMap).map(iconName => (
@@ -464,8 +506,8 @@ export default function UI() {
               </div>
             ))}
           </div>
-        </div>
-        <div className="space-y-4 pb-5 border-b">
+        </Section>
+        <Section>
           <h2 className="text-2xl font-semibold">Icon Badges</h2>
           <div className="space-y-4">
             {iconBadgeList.map((row, i) => (
@@ -476,9 +518,9 @@ export default function UI() {
               </div>
             ))}
           </div>
-        </div>
+        </Section>
 
-        <div className="space-y-4 pb-5 border-b">
+        <Section>
           <h2 className="text-2xl font-semibold">Logos</h2>
           <div className="space-y-4">
             <div className="flex space-x-2">
@@ -505,9 +547,9 @@ export default function UI() {
               </div>
             ))}
           </div>
-        </div>
+        </Section>
 
-        <div className="space-y-4 pb-5 border-b">
+        <Section>
           <h2 className="text-2xl font-semibold">Font sizes</h2>
           <div className="space-y-2">
             <p>
@@ -538,8 +580,8 @@ export default function UI() {
               1. <span className="text-2xs">Font size 2xs</span>
             </p>
           </div>
-        </div>
-        <div className="space-y-4 pb-5 border-b">
+        </Section>
+        <Section>
           <h2 className="text-2xl font-semibold">Box Shadows</h2>
           <div className="space-y-2">
             <div className="bg-surface-disabled-low-em rounded-16 shadow-0 w-[1000px] h-[700px]">
@@ -556,8 +598,8 @@ export default function UI() {
               </div>
             </div>
           </div>
-        </div>
-        <div className="space-y-4 pb-5 border-b">
+        </Section>
+        <Section>
           <h2 className="text-2xl font-semibold">Colors</h2>
           <div className="space-y-2">
             {Object.keys(tailwindColors).map(key => (
@@ -567,15 +609,21 @@ export default function UI() {
                   {tailwindColors[key].map(color => (
                     <div key={color} className="flex space-x-4">
                       <p>{`${key}-${color}`}</p>
-                      <div className={`bg-${key}-${color} w-20 h-10`} />
+                      <div
+                        className={`bg-${key}-${color} w-20 h-10 rounded-6`}
+                      />
                     </div>
                   ))}
                 </div>
               </div>
             ))}
           </div>
-        </div>
+        </Section>
       </div>
     </main>
   );
 }
+
+const Section = ({ children }: PropsWithChildren) => {
+  return <section className="space-y-4 py-12 border-b">{children}</section>;
+};
