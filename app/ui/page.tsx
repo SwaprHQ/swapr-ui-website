@@ -222,6 +222,8 @@ const ChipBittonChildren = (
   </>
 );
 
+const toggleGroupOptionSizes: ToogleOptionSizeProp[] = ["xs", "sm", "md", "lg"];
+
 const chipButtonList: Array<Array<ChipButtonProps>> = [
   [
     {
