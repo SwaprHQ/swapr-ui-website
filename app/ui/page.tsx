@@ -458,17 +458,19 @@ export default function UI() {
             .
           </p>
           <div className="divide-x divide-surface-surface-2 flex items-center space-x-5">
-            {["xs", "sm", "md", "lg"].map(size => (
+            {toggleGroupOptionSizes.map(size => (
               <div key={size} className="pl-4">
                 <p>Size: {size}</p>
-                <ToggleGroup
-                  value={slipage}
-                  onChange={setSlipage}
-                  size={size as ToogleOptionSizeProp}
-                >
-                  <ToogleGroupOption value="auto">auto</ToogleGroupOption>
-                  <ToogleGroupOption value="0.1">0.1%</ToogleGroupOption>
-                  <ToogleGroupOption value="0.5">0.5%</ToogleGroupOption>
+                <ToggleGroup value={slipage} onChange={setSlipage}>
+                  <ToogleGroupOption value="auto" size={size}>
+                    auto
+                  </ToogleGroupOption>
+                  <ToogleGroupOption value="0.1" size={size}>
+                    0.1%
+                  </ToogleGroupOption>
+                  <ToogleGroupOption value="0.5" size={size}>
+                    0.5%
+                  </ToogleGroupOption>
                 </ToggleGroup>
               </div>
             ))}
