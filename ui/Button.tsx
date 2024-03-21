@@ -1,5 +1,6 @@
 import { cva, cx } from "class-variance-authority";
 import { ButtonHTMLAttributes } from "react";
+import { twMerge } from "tailwind-merge";
 
 export const buttonStyles = cva(
   [
@@ -217,15 +218,15 @@ export const buttonStyles = cva(
   }
 );
 
-type SizeProp = "xs" | "sm" | "md" | "lg";
+export type ButtonSizeProp = "xs" | "sm" | "md" | "lg";
 type WidthProp = "normal" | "fit" | "full";
 export type ButtonVariantProp = "solid" | "pastel" | "outline" | "ghost";
 export type ButtonColorSchemeProp = "primary" | "error" | "success";
 
-interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: ButtonVariantProp;
   colorScheme?: ButtonColorSchemeProp;
-  size?: SizeProp;
+  size?: ButtonSizeProp;
   width?: WidthProp;
   disabled?: boolean;
   active?: boolean;
@@ -243,7 +244,7 @@ export const Button = ({
 }: ButtonProps) => {
   return (
     <button
-      className={cx(
+      className={twMerge(
         buttonStyles({
           size,
           variant,
