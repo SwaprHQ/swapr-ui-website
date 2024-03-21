@@ -44,6 +44,7 @@ import {
   Input,
   InputField,
   IconButton,
+  ButtonSizeProp,
 } from "@/ui";
 import { ThemeSwitch } from "@/components";
 import { Fragment, PropsWithChildren, useState } from "react";
@@ -259,10 +260,26 @@ interface IconListProps {
   disabled?: boolean;
   active?: boolean;
   variant?: ButtonVariantProp;
-  colorScheme?: ButtonColorSchemeProp;
+  size?: ButtonSizeProp;
 }
 
 const iconButtonList: Array<Array<IconListProps>> = [
+  [
+    { name: "add-fill", size: "xs" },
+    { name: "add-fill", disabled: true, size: "xs" },
+    { name: "add-fill", active: true, size: "xs" },
+    { name: "add-fill", variant: "pastel", size: "xs" },
+    { name: "add-fill", variant: "outline", size: "xs" },
+    { name: "add-fill", variant: "ghost", size: "xs" },
+  ],
+  [
+    { name: "add-fill", size: "sm" },
+    { name: "add-fill", disabled: true, size: "sm" },
+    { name: "add-fill", active: true, size: "sm" },
+    { name: "add-fill", variant: "pastel", size: "sm" },
+    { name: "add-fill", variant: "outline", size: "sm" },
+    { name: "add-fill", variant: "ghost", size: "sm" },
+  ],
   [
     { name: "add-fill" },
     { name: "add-fill", disabled: true },
@@ -270,39 +287,14 @@ const iconButtonList: Array<Array<IconListProps>> = [
     { name: "add-fill", variant: "pastel" },
     { name: "add-fill", variant: "outline" },
     { name: "add-fill", variant: "ghost" },
-    { name: "add-fill", variant: "ghost", disabled: true },
   ],
   [
-    { name: "add-fill", colorScheme: "error" },
-    { name: "add-fill", colorScheme: "error", disabled: true },
-    { name: "add-fill", colorScheme: "error", active: true },
-    { name: "add-fill", colorScheme: "error", variant: "pastel" },
-    { name: "add-fill", colorScheme: "error", variant: "outline" },
-    { name: "add-fill", colorScheme: "error", variant: "ghost" },
-    {
-      name: "add-fill",
-      colorScheme: "error",
-      variant: "ghost",
-      disabled: true,
-    },
-  ],
-  [
-    { name: "add-fill", colorScheme: "success" },
-    { name: "add-fill", colorScheme: "success", disabled: true },
-    { name: "add-fill", colorScheme: "success", active: true },
-    {
-      name: "add-fill",
-      colorScheme: "success",
-      variant: "pastel",
-    },
-    { name: "add-fill", colorScheme: "success", variant: "outline" },
-    { name: "add-fill", colorScheme: "success", variant: "ghost" },
-    {
-      name: "add-fill",
-      colorScheme: "success",
-      variant: "ghost",
-      disabled: true,
-    },
+    { name: "add-fill", size: "lg" },
+    { name: "add-fill", disabled: true, size: "lg" },
+    { name: "add-fill", active: true, size: "lg" },
+    { name: "add-fill", variant: "pastel", size: "lg" },
+    { name: "add-fill", variant: "outline", size: "lg" },
+    { name: "add-fill", variant: "ghost", size: "lg" },
   ],
 ];
 

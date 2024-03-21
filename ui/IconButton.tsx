@@ -4,10 +4,10 @@ import { Button, ButtonProps, ButtonSizeProp, Icon, IconProps } from ".";
 export const iconButtonStyles = cva([], {
   variants: {
     size: {
-      lg: "p-3.5",
+      xs: "p-1 rounded-6",
+      sm: "p-2 rounded-8",
       md: "p-3",
-      sm: "p-2",
-      xs: "p-1",
+      lg: "p-3.5",
     },
   },
   defaultVariants: {

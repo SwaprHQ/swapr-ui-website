@@ -4,7 +4,7 @@ import { twMerge } from "tailwind-merge";
 
 export const buttonStyles = cva(
   [
-    "flex items-center justify-center",
+    "flex items-center justify-center h-fit",
     "select-none font-semibold",
     "disabled:text-text-disabled disabled:cursor-not-allowed disabled:ring-0 disabled:shadow-inherit",
     "focus-visible:outline-none focus-visible:ring-[3px]",
