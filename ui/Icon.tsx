@@ -209,7 +209,7 @@ export const iconMap: Record<IconName, any> = {
   unlock: IconList.Unlock,
 };
 
-interface IconProps {
+export interface IconProps {
   alt?: string;
   className?: string;
   name: IconName;

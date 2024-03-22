@@ -43,6 +43,8 @@ import {
   ToogleOptionSizeProp,
   Input,
   InputField,
+  IconButton,
+  ButtonSizeProp,
 } from "@/ui";
 import { ThemeSwitch } from "@/components";
 import { Fragment, PropsWithChildren, useState } from "react";
@@ -253,6 +255,49 @@ const TagColorSchemes = [
   "info",
 ];
 
+interface IconListProps {
+  name: IconName;
+  disabled?: boolean;
+  active?: boolean;
+  variant?: ButtonVariantProp;
+  size?: ButtonSizeProp;
+}
+
+const iconButtonList: Array<Array<IconListProps>> = [
+  [
+    { name: "add-fill", size: "xs" },
+    { name: "add-fill", disabled: true, size: "xs" },
+    { name: "add-fill", active: true, size: "xs" },
+    { name: "add-fill", variant: "pastel", size: "xs" },
+    { name: "add-fill", variant: "outline", size: "xs" },
+    { name: "add-fill", variant: "ghost", size: "xs" },
+  ],
+  [
+    { name: "add-fill", size: "sm" },
+    { name: "add-fill", disabled: true, size: "sm" },
+    { name: "add-fill", active: true, size: "sm" },
+    { name: "add-fill", variant: "pastel", size: "sm" },
+    { name: "add-fill", variant: "outline", size: "sm" },
+    { name: "add-fill", variant: "ghost", size: "sm" },
+  ],
+  [
+    { name: "add-fill" },
+    { name: "add-fill", disabled: true },
+    { name: "add-fill", active: true },
+    { name: "add-fill", variant: "pastel" },
+    { name: "add-fill", variant: "outline" },
+    { name: "add-fill", variant: "ghost" },
+  ],
+  [
+    { name: "add-fill", size: "lg" },
+    { name: "add-fill", disabled: true, size: "lg" },
+    { name: "add-fill", active: true, size: "lg" },
+    { name: "add-fill", variant: "pastel", size: "lg" },
+    { name: "add-fill", variant: "outline", size: "lg" },
+    { name: "add-fill", variant: "ghost", size: "lg" },
+  ],
+];
+
 export default function UI() {
   const [openModal, setOpenModal] = useState(false);
 
@@ -286,6 +331,16 @@ export default function UI() {
             <div key={i} className="flex space-x-2">
               {row.map((button, j) => (
                 <ChipButton {...button} key={j} />
+              ))}
+            </div>
+          ))}
+        </Section>
+        <Section>
+          <h2 className="text-2xl font-semibold">Icon Buttons</h2>
+          {iconButtonList.map((row, i) => (
+            <div key={i} className="flex space-x-2">
+              {row.map((button, j) => (
+                <IconButton {...button} key={j} />
               ))}
             </div>
           ))}
@@ -510,9 +565,7 @@ export default function UI() {
               <DialogContent>
                 <DialogHeader size="xl" className="text-center">
                   <DialogClose position="left" size="xl">
-                    <Button variant="ghost">
-                      <Icon name="arrow-left" />
-                    </Button>
+                    <IconButton variant="ghost" name="arrow-left" />
                   </DialogClose>
                   Confirm Swap
                 </DialogHeader>

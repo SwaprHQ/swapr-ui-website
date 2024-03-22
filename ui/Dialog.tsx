@@ -3,7 +3,7 @@
 import React from "react";
 import * as DialogPrimitive from "@radix-ui/react-dialog";
 import { cva, cx } from "class-variance-authority";
-import { Button, Icon } from ".";
+import { Button, Icon, IconButton } from ".";
 
 interface SizeProp {
   size?: "lg" | "xl" | null | undefined;
@@ -96,10 +96,10 @@ const closeStyle = cva(
       size: { lg: "", xl: "" },
     },
     compoundVariants: [
-      { position: "right", size: "lg", class: ["top-5 right-5"] },
-      { position: "left", size: "lg", class: ["top-5 left-5"] },
-      { position: "right", size: "xl", class: ["top-6 right-6"] },
-      { position: "left", size: "xl", class: ["top-6 left-6"] },
+      { position: "right", size: "lg", class: ["top-4 right-4"] },
+      { position: "left", size: "lg", class: ["top-4 left-4"] },
+      { position: "right", size: "xl", class: ["top-5 right-5"] },
+      { position: "left", size: "xl", class: ["top-5 left-5"] },
     ],
     defaultVariants: { position: "right", size: "lg" },
   }
@@ -129,9 +129,7 @@ const DialogHeader = ({
 }: React.HTMLAttributes<HTMLDivElement> & SizeProp) => (
   <>
     <DialogClose position="right" size={size}>
-      <Button variant="ghost">
-        <Icon name="cross" />
-      </Button>
+      <IconButton name="cross" variant="ghost" />
     </DialogClose>
     <DialogTitle className={cx("p-6", className)} {...props} />
   </>
