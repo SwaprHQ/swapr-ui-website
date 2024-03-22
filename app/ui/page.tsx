@@ -62,7 +62,7 @@ function extractStringValuesFromObject(object: any): string[] {
         keys.push(key);
       } else if (typeof value === "object" && value) {
         const nestedKeys = extractStringValuesFromObject(value);
-        keys.push(...nestedKeys.map((nestedKey) => `${key}-${nestedKey}`));
+        keys.push(...nestedKeys.map(nestedKey => `${key}-${nestedKey}`));
       }
     }
   }
@@ -515,7 +515,7 @@ export default function UI() {
             .
           </p>
           <div className="divide-x divide-surface-surface-2 flex items-center space-x-5">
-            {toggleGroupOptionSizes.map((size) => (
+            {toggleGroupOptionSizes.map(size => (
               <div key={size} className="pl-4">
                 <p>Size: {size}</p>
                 <ToggleGroup value={slipage} onChange={setSlipage}>
@@ -598,7 +598,7 @@ export default function UI() {
         <Section>
           <h2 className="text-2xl font-semibold">Tag</h2>
           <div className="flex space-x-6">
-            {TagColorSchemes.map((color) => (
+            {TagColorSchemes.map(color => (
               <Fragment key={color}>
                 <Tag colorScheme={color as TagColorSchemeProp} size="sm">
                   Tag
@@ -687,7 +687,7 @@ export default function UI() {
         <Section>
           <h2 className="text-2xl font-semibold">Icons</h2>
           <div className="flex flex-wrap space-x-4 space-y-2 md:space-y-0">
-            {Object.keys(iconMap).map((iconName) => (
+            {Object.keys(iconMap).map(iconName => (
               <div
                 className="flex flex-col items-center space-y-2"
                 key={iconName}
@@ -795,11 +795,11 @@ export default function UI() {
         <Section>
           <h2 className="text-2xl font-semibold">Colors</h2>
           <div className="space-y-2">
-            {Object.keys(tailwindColors).map((key) => (
+            {Object.keys(tailwindColors).map(key => (
               <div key={key} className="space-y-2">
                 <p className="text-xl capitalize">{key}</p>
                 <div className="space-y-2">
-                  {tailwindColors[key].map((color) => (
+                  {tailwindColors[key].map(color => (
                     <div key={color} className="flex space-x-4">
                       <p>{`${key}-${color}`}</p>
                       <div
