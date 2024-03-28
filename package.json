@@ -1,6 +1,6 @@
 {
-  "name": "swapr-ui",
-  "version": "0.1.0",
+  "name": "swapr-ui-website",
+  "version": "0.1.5",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -18,7 +18,7 @@
     "react": "latest",
     "react-dom": "latest",
     "sonner": "^1.4.2",
-    "swapr-ui": "0.0.32",
+    "swapr-ui": "0.0.35",
     "tailwind-merge": "^2.2.2"
   },
   "devDependencies": {

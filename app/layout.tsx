@@ -1,33 +1,28 @@
-import "./globals.css";
+import { PropsWithChildren } from "react";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import { ThemeProvider } from "../providers/ThemeProvider";
-import { Toaster } from "sonner";
+import "./globals.css";
+import { Providers } from "../providers";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Swapr UI",
-  description: "Components to build web3 dapps",
+  description: "Web3 components to build dapps fast",
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: PropsWithChildren) {
   return (
     <html lang="en">
       <body className={inter.className}>
-        <ThemeProvider
+        <Providers
           attribute="data-theme"
           defaultTheme="system"
           enableSystem
           disableTransitionOnChange
         >
           {children}
-          <Toaster position="top-right" />
-        </ThemeProvider>
+        </Providers>
       </body>
     </html>
   );

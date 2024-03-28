@@ -1,5 +1,6 @@
 "use client";
 
+import { Fragment, PropsWithChildren, useState } from "react";
 import resolveConfig from "tailwindcss/resolveConfig";
 import tailwindConfig from "@/tailwind.config";
 
@@ -47,7 +48,6 @@ import {
 } from "swapr-ui";
 
 import { ThemeSwitch } from "@/components";
-import { Fragment, PropsWithChildren, useState } from "react";
 
 const fullConfig = resolveConfig(tailwindConfig);
 
