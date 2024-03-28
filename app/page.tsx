@@ -1,7 +1,7 @@
 "use client";
 
-import { Button } from "@/ui";
 import Link from "next/link";
+import { Button } from "swapr-ui";
 
 export default function Home() {
   return (
@@ -14,7 +14,9 @@ export default function Home() {
           A set of components made to help you ship web3 apps faster than ever.
         </p>
         <Link href="/ui" className="block">
-          <Button className="mx-auto">Explore components</Button>
+          <Button onClick={() => console.log("hey")} className="mx-auto">
+            Explore components
+          </Button>
         </Link>
       </div>
     </main>
