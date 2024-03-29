@@ -1,7 +1,9 @@
 import { PropsWithChildren } from "react";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import "./globals.css";
+import "swapr-ui/styles.css";
+import "./global.css";
+
 import { Providers } from "../providers";
 
 const inter = Inter({ subsets: ["latin"] });

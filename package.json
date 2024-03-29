@@ -18,7 +18,7 @@
     "react": "latest",
     "react-dom": "latest",
     "sonner": "^1.4.2",
-    "swapr-ui": "0.0.35",
+    "swapr-ui": "^0.0.36",
     "tailwind-merge": "^2.2.2"
   },
   "devDependencies": {
