@@ -1,53 +1,53 @@
 "use client";
 
+import { Fragment, PropsWithChildren, useState } from "react";
 import resolveConfig from "tailwindcss/resolveConfig";
-
 import tailwindConfig from "@/tailwind.config";
+
 import {
   Button,
   ButtonColorSchemeProp,
+  ButtonSizeProp,
   ButtonVariantProp,
-  IconBadge,
-  IconBadgeColorSchemeProp,
-  IconBadgeVariantProp,
-  Icon,
-  IconName,
-  iconMap,
-  Logo,
-  LogoPair,
-  LogoPairVariant,
-  LogoSizeProp,
   ChipButton,
   ChipButtonColorSchemeProp,
   ChipButtonSizeProp,
-  errorToast,
-  successToast,
-  toast,
-  warningToast,
-  Tag,
-  TagColorSchemeProp,
-  Dialog,
-  DialogContent,
-  DialogTrigger,
-  DialogClose,
   DialogHeader,
+  DialogTrigger,
+  DialogContent,
   DialogBody,
-  DialogFooter,
-  TabGroup,
+  Icon,
+  IconBadge,
+  IconBadgeColorSchemeProp,
+  IconBadgeVariantProp,
+  IconButton,
+  IconName,
+  iconMap,
+  Input,
+  Logo,
+  LogoSizeProp,
+  LogoPair,
+  LogoPairVariant,
   TabBody,
+  TabGroup,
   TabHeader,
   TabPanel,
   TabStyled,
+  Tag,
+  TagColorSchemeProp,
   ToggleGroup,
   ToogleGroupOption,
   ToogleOptionSizeProp,
-  Input,
-  InputField,
-  IconButton,
-  ButtonSizeProp,
-} from "@/ui";
+  toast,
+  errorToast,
+  successToast,
+  warningToast,
+  Dialog,
+  DialogClose,
+  DialogFooter,
+} from "swapr-ui";
+
 import { ThemeSwitch } from "@/components";
-import { Fragment, PropsWithChildren, useState } from "react";
 
 const fullConfig = resolveConfig(tailwindConfig);
 
