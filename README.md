@@ -1,13 +1,20 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## Swapr UI
+## Swapr UI Website
 
-A set of components to build dapps fast!
+This a website to showcase the Swapr-ui package, that has the components to build dapps fast!
 
 <img width="1748" alt="image" src="https://github.com/SwaprHQ/swapr-ui/assets/5664434/d412fc81-c0e9-4030-a9f9-d1bb4f3ea0d1">
 
+## To run this site locally
 
-First, run the development server:
+Install packages
+
+```bash
+bun install
+```
+
+Run the development server:
 
 ```bash
 bun dev
@@ -15,15 +22,46 @@ bun dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Installing swapr-ui on a
 
-## Learn More
+with npm
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+npm install swapr-ui@latest
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+with bun
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+```bash
+bun add swapr-ui@latest 
+```
+
+## Using tailwind on the project
+
+Add this path to content on tailwind config
+
+**Tailwind Config**
+
+```
+ content: [
+    <!-- other paterns -->
+    "./node_modules/swapr-ui/**/*.{js,ts,js,mjs}",
+  ],
+```
+
+**Import Colors**
+
+You can either import colors or just copy colors.css from `swapr-ui-lib` and tweak it. On Next js, you can import it on `layout.js`.
+
+```
+  import "swapr-ui/colors.css";
+```
+
+## Not using tailwind
+
+Import all the needed styles
+
+```
+import "swapr-ui/styles.css";
+```
